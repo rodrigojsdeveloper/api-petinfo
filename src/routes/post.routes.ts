@@ -7,6 +7,8 @@ const routes = Router();
 const postRoutes = () => {
   routes.post("", new PostController().create);
 
+  routes.get("", new PostController().list);
+
   return routes;
 };
 
