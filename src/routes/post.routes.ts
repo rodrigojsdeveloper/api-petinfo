@@ -5,7 +5,7 @@ import { PostController } from "../controllers/post.controller";
 const routes = Router();
 
 const postRoutes = () => {
-  routes.post("/", new PostController().create);
+  routes.post("", new PostController().create);
 
   return routes;
 };

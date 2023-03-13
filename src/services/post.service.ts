@@ -13,6 +13,12 @@ class PostService {
 
     return newPost;
   }
+
+  public async list(): Promise<Array<Post>> {
+    const posts = await postRepository.find();
+
+    return posts;
+  }
 }
 
 export { PostService };
