@@ -10,6 +10,12 @@ class PostController {
 
     return res.status(201).json(newPost);
   }
+
+  public async list(req: Request, res: Response) {
+    const posts = await new PostService().list();
+
+    return res.json(posts);
+  }
 }
 
 export { PostController };
