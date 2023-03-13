@@ -36,6 +36,16 @@ class PostService {
 
     return updatedPost!;
   }
+
+  public async delete(id: string): Promise<void> {
+    const post = await postRepository.findOneBy({ id });
+
+    if (!post) {
+      throw new Error("Post");
+    }
+
+    await postRepository.delete(post.id);
+  }
 }
 
 export { PostService };

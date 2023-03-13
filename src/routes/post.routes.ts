@@ -9,7 +9,7 @@ const postRoutes = () => {
 
   routes.get("", new PostController().list);
 
-  routes.patch("", new PostController().update);
+  routes.patch("/:id", new PostController().update);
 
   return routes;
 };
