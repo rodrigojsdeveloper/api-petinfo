@@ -26,6 +26,14 @@ class PostController {
 
     return res.json(updatedPost);
   }
+
+  public async delete(req: Request, res: Response) {
+    const id: string = req.params.id;
+
+    await new PostService().delete(id);
+
+    return res.status(204).json();
+  }
 }
 
 export { PostController };
