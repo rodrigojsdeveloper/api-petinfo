@@ -46,6 +46,16 @@ class PostService {
 
     await postRepository.delete(post.id);
   }
+
+  public async view(id: string): Promise<Post> {
+    const post = await postRepository.findOneBy({ id });
+
+    if (!post) {
+      throw new Error("Post");
+    }
+
+    return post;
+  }
 }
 
 export { PostService };
