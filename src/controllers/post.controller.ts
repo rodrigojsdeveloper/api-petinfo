@@ -16,6 +16,16 @@ class PostController {
 
     return res.json(posts);
   }
+
+  public async update(req: Request, res: Response) {
+    const id: string = req.params.id;
+
+    const data: Partial<IPost> = req.body;
+
+    const updatedPost = await new PostService().update(data, id);
+
+    return res.json(updatedPost);
+  }
 }
 
 export { PostController };
