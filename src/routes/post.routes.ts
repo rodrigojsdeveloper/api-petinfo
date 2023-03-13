@@ -9,6 +9,8 @@ const postRoutes = () => {
 
   routes.get("", new PostController().list);
 
+  routes.patch("", new PostController().update);
+
   return routes;
 };
 
