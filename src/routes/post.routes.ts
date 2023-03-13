@@ -10,6 +10,8 @@ const postRoutes = () => {
   routes.get("", new PostController().list);
 
   routes.patch("/:id", new PostController().update);
+  
+  routes.delete("/:id", new PostController().delete);
 
   return routes;
 };
