@@ -20,6 +20,16 @@ class UserService {
 
     return newUser;
   }
+
+  public async profile(email: string): Promise<User> {
+    const user = await userRepository.findOneBy({ email });
+
+    if (!user) {
+      throw new Error("User");
+    }
+
+    return user;
+  }
 }
 
 export { UserService };
