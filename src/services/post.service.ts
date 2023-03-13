@@ -19,6 +19,23 @@ class PostService {
 
     return posts;
   }
+
+  public async update(post: Partial<IPost>, id: string): Promise<Post> {
+    const findPost = await postRepository.findOneBy({ id });
+
+    if (!findPost) {
+      throw new Error("Post");
+    }
+
+    await postRepository.update(id, {
+      title: post.title ? post.title : findPost.title,
+      description: post.description ? post.description : findPost.description,
+    });
+
+    const updatedPost = await postRepository.findOneBy({ id: findPost.id });
+
+    return updatedPost!;
+  }
 }
 
 export { PostService };
