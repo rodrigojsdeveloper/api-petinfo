@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import path from "path";
+import "reflect-metadata";
 
 require("dotenv").config();
 
@@ -8,7 +8,10 @@ const AppDataSource = new DataSource(
     ? {
         type: "sqlite",
         database: ":memory:",
-        entities: [path.join(__dirname, "./entities/*.{ts,js}")],
+        entities: [
+          "src/entities/*.entity.{ts,js}",
+          "dist/entities/*.entity.{ts,js}",
+        ],
         synchronize: true,
       }
     : {
@@ -19,8 +22,11 @@ const AppDataSource = new DataSource(
         password: process.env.POSTGRES_PASSWORD,
         database: process.env.POSTGRES_DB,
         synchronize: false,
-        entities: [path.join(__dirname, "./entities/*.{ts,js}")],
-        migrations: [path.join(__dirname, "./migrations/*.{ts,js}")],
+        entities: [
+          "src/entities/*.entity.{ts,js}",
+          "dist/entities/*.entity.{ts,js}",
+        ],
+        migrations: ["src/migrations/*.{ts,js}", "dist/migrations/*.{ts,js}"],
       }
 );
 
