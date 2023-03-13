@@ -34,6 +34,14 @@ class PostController {
 
     return res.status(204).json();
   }
+
+  public async view(req: Request, res: Response) {
+    const id: string = req.params.id;
+
+    const viewPost = await new PostService().view(id);
+
+    return res.json(viewPost);
+  }
 }
 
 export { PostController };
