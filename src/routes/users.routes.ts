@@ -7,6 +7,8 @@ const routes = Router();
 const usersRoutes = () => {
   routes.post("/signup", new UserController().create);
 
+  routes.get("/profile", new UserController().create);
+
   return routes;
 };
 
