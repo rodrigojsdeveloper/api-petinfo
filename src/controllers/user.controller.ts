@@ -10,6 +10,14 @@ class UserController {
 
     return res.status(201).json(newUser);
   }
+
+  public async profile(req: Request, res: Response) {
+    const email: string = req.email;
+
+    const profile = await new UserService().profile(email);
+
+    return res.json(profile);
+  }
 }
 
 export { UserController };

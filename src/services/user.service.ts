@@ -22,13 +22,13 @@ class UserService {
   }
 
   public async profile(email: string): Promise<User> {
-    const user = await userRepository.findOneBy({ email });
+    const profile = await userRepository.findOneBy({ email });
 
-    if (!user) {
+    if (!profile) {
       throw new Error("User");
     }
 
-    return user;
+    return profile;
   }
 }
 
